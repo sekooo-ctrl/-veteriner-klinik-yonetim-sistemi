@@ -1,0 +1,63 @@
+
+@{
+    ViewData["Title"] = "Admin Paneli";
+}
+
+<div class="container mt-4">
+    <div class="mb-4">
+        <h2>Yönetim Paneli</h2>
+        <p class="text-muted">
+            Veteriner Kliniği Yönetim Sistemi
+        </p>
+    </div>
+
+    <div class="row g-4">
+
+        <div class="col-md-3">
+            <div class="card shadow-sm border-0 rounded-4">
+                <div class="card-body p-4">
+                    <h6 class="text-muted">Evcil Hayvanlar</h6>
+                    <h2>@ViewBag.HayvanSayisi</h2>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card shadow-sm border-0 rounded-4">
+                <div class="card-body p-4">
+                    <h6 class="text-muted">Veterinerler</h6>
+                    <h2>@ViewBag.VeterinerSayisi</h2>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card shadow-sm border-0 rounded-4">
+                <div class="card-body p-4">
+                    <h6 class="text-muted">Randevular</h6>
+                    <h2>@ViewBag.RandevuSayisi</h2>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card shadow-sm border-0 rounded-4">
+                <div class="card-body p-4">
+                    <h6 class="text-muted">Hizmetler</h6>
+                    <h2>@ViewBag.HizmetSayisi</h2>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="card border-0 shadow-sm rounded-4 mt-4">
+        <div class="card-body p-4">
+            <h4>Hoş Geldiniz, Yönetici</h4>
+            <p class="text-muted mb-0">
+                Bu panel üzerinden veterinerleri,
+                hizmetleri ve randevuları yöneteceksiniz.
+            </p>
+        </div>
+    </div>
+</div>
