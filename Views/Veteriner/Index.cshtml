@@ -1,0 +1,127 @@
+
+@model List<VeterinerKlinik.Web.Models.Veteriner>
+
+@{
+    ViewData["Title"] = "Veteriner Yönetimi";
+}
+
+<div class="container mt-4">
+
+    <!-- Sayfa başlığı ve veteriner ekleme butonu -->
+    <div class="d-flex justify-content-between align-items-center mb-4">
+
+        <div>
+            <h2>Veteriner Yönetimi</h2>
+            <p class="text-muted">
+                Klinikte çalışan veteriner hekimleri yönetin.
+            </p>
+        </div>
+
+        <a asp-controller="Veteriner"
+           asp-action="Create"
+           class="btn btn-primary">
+            + Yeni Veteriner Ekle
+        </a>
+
+    </div>
+
+    <!-- Başarılı işlem mesajı -->
+    @if (TempData["Success"] != null)
+    {
+        <div class="alert alert-success alert-dismissible fade show"
+             role="alert">
+            @TempData["Success"]
+
+            <button type="button"
+                    class="btn-close"
+                    data-bs-dismiss="alert"
+                    aria-label="Kapat">
+            </button>
+        </div>
+    }
+
+    <!-- Hata mesajı -->
+    @if (TempData["Error"] != null)
+    {
+        <div class="alert alert-danger alert-dismissible fade show"
+             role="alert">
+            @TempData["Error"]
+
+            <button type="button"
+                    class="btn-close"
+                    data-bs-dismiss="alert"
+                    aria-label="Kapat">
+            </button>
+        </div>
+    }
+
+    <!-- Veteriner listesi -->
+    <div class="card border-0 shadow-sm rounded-4">
+
+        <div class="card-body p-4">
+
+            <div class="table-responsive">
+
+                <table class="table table-hover align-middle">
+
+                    <thead class="table-light">
+                        <tr>
+                            <th>Ad</th>
+                            <th>Soyad</th>
+                            <th>Uzmanlık Alanı</th>
+                            <th class="text-end">İşlemler</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+
+                        @foreach (var veteriner in Model)
+                        {
+                            <tr>
+                                <td>@veteriner.Ad</td>
+
+                                <td>@veteriner.Soyad</td>
+
+                                <td>@veteriner.UzmanlikAlani</td>
+
+                                <td class="text-end">
+
+                                    <!-- Düzenle butonu -->
+                                    <a asp-controller="Veteriner"
+                                       asp-action="Edit"
+                                       asp-route-id="@veteriner.Id"
+                                       class="btn btn-sm btn-outline-primary me-1">
+                                        Düzenle
+                                    </a>
+
+                                    <!-- Sil butonu -->
+                                    <a asp-controller="Veteriner"
+                                       asp-action="Delete"
+                                       asp-route-id="@veteriner.Id"
+                                       class="btn btn-sm btn-outline-danger">
+                                        Sil
+                                    </a>
+
+                                </td>
+                            </tr>
+                        }
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+            <!-- Kayıt yoksa gösterilecek mesaj -->
+            @if (!Model.Any())
+            {
+                <div class="alert alert-info mb-0">
+                    Henüz kayıtlı veteriner bulunmuyor.
+                    Yeni Veteriner Ekle butonunu kullanarak
+                    ilk veterineri ekleyebilirsiniz.
+                </div>
+            }
+
+        </div>
+    </div>
+</div>

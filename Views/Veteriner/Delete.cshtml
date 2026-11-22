@@ -1,0 +1,63 @@
+
+@model VeterinerKlinik.Web.Models.Veteriner
+
+@{
+    ViewData["Title"] = "Veteriner Sil";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-7">
+
+            <div class="card border-0 shadow-sm rounded-4">
+                <div class="card-body p-4">
+
+                    <h2 class="text-danger mb-3">
+                        Veteriner Sil
+                    </h2>
+
+                    <div class="alert alert-warning">
+                        Bu veterineri silmek istediğinize
+                        emin misiniz?
+                    </div>
+
+                    <dl class="row">
+                        <dt class="col-sm-4">Ad</dt>
+                        <dd class="col-sm-8">@Model.Ad</dd>
+
+                        <dt class="col-sm-4">Soyad</dt>
+                        <dd class="col-sm-8">@Model.Soyad</dd>
+
+                        <dt class="col-sm-4">Uzmanlık</dt>
+                        <dd class="col-sm-8">
+                            @Model.UzmanlikAlani
+                        </dd>
+                    </dl>
+
+                    <p class="text-muted">
+                        Bu işlem veterinerin sisteme giriş
+                        hesabını da silecektir.
+                        Randevusu bulunan veterinerler
+                        silinemez.
+                    </p>
+
+                    <form asp-action="Delete"
+                          asp-route-id="@Model.Id"
+                          method="post">
+
+                        <button type="submit"
+                                class="btn btn-danger">
+                            Evet, Sil
+                        </button>
+
+                        <a asp-action="Index"
+                           class="btn btn-outline-secondary">
+                            İptal
+                        </a>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

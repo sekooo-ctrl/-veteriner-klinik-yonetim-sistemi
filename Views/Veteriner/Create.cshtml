@@ -1,0 +1,99 @@
+
+@model VeterinerKlinik.Web.ViewModels.VeterinerEkleViewModel
+
+@{
+    ViewData["Title"] = "Veteriner Ekle";
+}
+
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-7">
+
+            <div class="card border-0 shadow-sm rounded-4">
+                <div class="card-body p-4">
+
+                    <h2 class="mb-4">Yeni Veteriner Ekle</h2>
+
+                    <form asp-action="Create" method="post">
+
+                        <div asp-validation-summary="ModelOnly"
+                             class="text-danger mb-3"></div>
+
+                        <div class="mb-3">
+                            <label asp-for="Ad" class="form-label">
+                                Ad
+                            </label>
+                            <input asp-for="Ad"
+                                   class="form-control" />
+                            <span asp-validation-for="Ad"
+                                  class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Soyad" class="form-label">
+                                Soyad
+                            </label>
+                            <input asp-for="Soyad"
+                                   class="form-control" />
+                            <span asp-validation-for="Soyad"
+                                  class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="UzmanlikAlani"
+                                   class="form-label">
+                                Uzmanlık Alanı
+                            </label>
+                            <input asp-for="UzmanlikAlani"
+                                   class="form-control"
+                                   placeholder="Örn: Cerrahi" />
+                            <span asp-validation-for="UzmanlikAlani"
+                                  class="text-danger"></span>
+                        </div>
+
+                        <hr />
+
+                        <h5 class="mb-3">Giriş Bilgileri</h5>
+
+                        <div class="mb-3">
+                            <label asp-for="Email" class="form-label">
+                                E-posta
+                            </label>
+                            <input asp-for="Email"
+                                   class="form-control" />
+                            <span asp-validation-for="Email"
+                                  class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Password" class="form-label">
+                                Şifre
+                            </label>
+                            <input asp-for="Password"
+                                   class="form-control" />
+                            <span asp-validation-for="Password"
+                                  class="text-danger"></span>
+                        </div>
+
+                        <div class="d-flex gap-2">
+                            <button type="submit"
+                                    class="btn btn-primary">
+                                Veteriner Ekle
+                            </button>
+
+                            <a asp-action="Index"
+                               class="btn btn-outline-secondary">
+                                İptal
+                            </a>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
