@@ -1,0 +1,88 @@
+
+@model List<VeterinerKlinik.Web.Models.Hizmet>
+
+@{
+    ViewData["Title"] = "Hizmet Yönetimi";
+}
+
+<div class="container mt-4">
+
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+            <h2>Hizmet Yönetimi</h2>
+            <p class="text-muted">
+                Kliniğimizde sunulan hizmetleri yönetin.
+            </p>
+        </div>
+
+        <a asp-action="Create" class="btn btn-primary">
+            + Yeni Hizmet Ekle
+        </a>
+    </div>
+
+    @if (TempData["Success"] != null)
+    {
+        <div class="alert alert-success">
+            @TempData["Success"]
+        </div>
+    }
+
+    @if (TempData["Error"] != null)
+    {
+        <div class="alert alert-danger">
+            @TempData["Error"]
+        </div>
+    }
+
+    <div class="card border-0 shadow-sm rounded-4">
+        <div class="card-body p-4">
+
+            <div class="table-responsive">
+                <table class="table table-hover align-middle">
+                    <thead class="table-light">
+                        <tr>
+                            <th>Hizmet Adı</th>
+                            <th>Açıklama</th>
+                            <th>Süre</th>
+                            <th>Ücret</th>
+                            <th class="text-end">İşlemler</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        @foreach (var hizmet in Model)
+                        {
+                            <tr>
+                                <td>@hizmet.Ad</td>
+                                <td>@hizmet.Aciklama</td>
+                                <td>@hizmet.SureDakika dk</td>
+                                <td>@hizmet.Ucret.ToString("N2") TL</td>
+                                <td class="text-end">
+                                    <a asp-action="Edit"
+                                       asp-route-id="@hizmet.Id"
+                                       class="btn btn-sm btn-outline-primary me-1">
+                                        Düzenle
+                                    </a>
+
+                                    <a asp-action="Delete"
+                                       asp-route-id="@hizmet.Id"
+                                       class="btn btn-sm btn-outline-danger">
+                                        Sil
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+
+            @if (!Model.Any())
+            {
+                <div class="alert alert-info mb-0">
+                    Henüz kayıtlı hizmet bulunmuyor.
+                </div>
+            }
+
+        </div>
+    </div>
+</div>

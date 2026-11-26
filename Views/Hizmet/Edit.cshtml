@@ -1,0 +1,89 @@
+
+@model VeterinerKlinik.Web.Models.Hizmet
+
+@{
+    ViewData["Title"] = "Hizmet Düzenle";
+}
+
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-7">
+            <div class="card border-0 shadow-sm rounded-4">
+                <div class="card-body p-4">
+
+                    <h2 class="mb-4">Hizmet Düzenle</h2>
+
+                    <form asp-action="Edit"
+                          asp-route-id="@Model.Id"
+                          method="post">
+
+                        <input asp-for="Id" type="hidden" />
+
+                        <div asp-validation-summary="ModelOnly"
+                             class="text-danger mb-3"></div>
+
+                        <div class="mb-3">
+                            <label asp-for="Ad" class="form-label">
+                                Hizmet Adı
+                            </label>
+                            <input asp-for="Ad" class="form-control" />
+                            <span asp-validation-for="Ad"
+                                  class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Aciklama" class="form-label">
+                                Açıklama
+                            </label>
+                            <textarea asp-for="Aciklama"
+                                      class="form-control"
+                                      rows="3"></textarea>
+                            <span asp-validation-for="Aciklama"
+                                  class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="SureDakika" class="form-label">
+                                Süre (Dakika)
+                            </label>
+                            <input asp-for="SureDakika"
+                                   type="number"
+                                   min="1"
+                                   class="form-control" />
+                            <span asp-validation-for="SureDakika"
+                                  class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Ucret" class="form-label">
+                                Ücret (TL)
+                            </label>
+                            <input asp-for="Ucret"
+                                   type="number"
+                                   step="0.01"
+                                   min="0.01"
+                                   class="form-control" />
+                            <span asp-validation-for="Ucret"
+                                  class="text-danger"></span>
+                        </div>
+
+                        <div class="d-flex gap-2">
+                            <button type="submit" class="btn btn-primary">
+                                Değişiklikleri Kaydet
+                            </button>
+                            <a asp-action="Index"
+                               class="btn btn-outline-secondary">
+                                İptal
+                            </a>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
